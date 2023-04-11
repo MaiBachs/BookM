@@ -23,25 +23,25 @@ public class BookMApplication {
 		SpringApplication.run(BookMApplication.class, args);
 	}
 
-	@PostConstruct
-	protected void init() {
-
-		List<AuthorityEntity> authorityList=new ArrayList<>();
-
-		authorityList.add(createAuthority("ADMIN","ADMIN role"));
-
-		User user=new User();
-
-		user.setUserName("admin");
-		user.setFirstName("admin");
-		user.setLastName("admin");
-
-		user.setPassword(passwordEncoder.encode("admin"));
-		user.setEnabled(true);
-		user.setAuthorities(authorityList);
-
-		userDetailsRepository.save(user);
-	}
+//	@PostConstruct
+//	protected void init() {
+//
+//		List<AuthorityEntity> authorityList=new ArrayList<>();
+//
+//		authorityList.add(createAuthority("ADMIN","ADMIN role"));
+//
+//		User user=new User();
+//
+//		user.setUserName("admin");
+//		user.setFirstName("admin");
+//		user.setLastName("admin");
+//
+//		user.setPassword(passwordEncoder.encode("admin"));
+//		user.setEnabled(true);
+//		user.setAuthorities(authorityList);
+//
+//		userDetailsRepository.save(user);
+//	}
 	private AuthorityEntity createAuthority(String roleCode,String roleDescription) {
 		AuthorityEntity authority=new AuthorityEntity();
 		authority.setRoleCode(roleCode);
