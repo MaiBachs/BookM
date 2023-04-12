@@ -28,7 +28,7 @@ public class BookMApplication {
 //
 //		List<AuthorityEntity> authorityList=new ArrayList<>();
 //
-//		authorityList.add(createAuthority("ADMIN","ADMIN role"));
+//		authorityList.add(createAuthority("ROLE_ADMIN","ADMIN role"));
 //
 //		User user=new User();
 //
