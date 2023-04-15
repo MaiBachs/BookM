@@ -38,7 +38,7 @@ public class JpaAuditingConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests((request) -> request
                         .antMatchers( "/api/v1/auth/login","/api/v1/auth/logout").permitAll()
                         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .antMatchers("/getBookByName","/bill","/purchaseorder","/findAllRule","/arinvoice","/bookmanager","/getAllBook","/pagebusiness","/getBookByName","/getAllCustomer","/findArinvoice").hasRole("ADMIN")
+                        .antMatchers("/bill","/purchaseorder","/findAllRule","/arinvoice","/bookmanager","/pagebusiness","/getAllCustomer","/findArinvoice").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilterBefore(new JWTAuthenticationFilter(userService, jWTTokenHelper),
                         UsernamePasswordAuthenticationFilter.class);
