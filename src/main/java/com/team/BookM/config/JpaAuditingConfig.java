@@ -36,7 +36,7 @@ public class JpaAuditingConfig extends WebSecurityConfigurerAdapter{
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint).and()
                 .authorizeRequests((request) -> request
-                        .antMatchers( "/api/v1/auth/login","/api/v1/auth/logout").permitAll()
+                        .antMatchers( "/api/v1/auth/login","/api/v1/auth/logout", "/getAllBook").permitAll()
                         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .antMatchers("/bill","/purchaseorder","/findAllRule","/arinvoice","/bookmanager","/pagebusiness","/getAllCustomer","/findArinvoice").hasRole("ADMIN")
                         .anyRequest().authenticated())
