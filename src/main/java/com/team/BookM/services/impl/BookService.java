@@ -37,7 +37,7 @@ public class BookService implements IBookService {
         Pageable pageable = PageRequest.of(page, size);
         Page<BookEntity> bookPage = bookRepo.findAll(pageable);
         BookOutput bookOutput = new BookOutput();
-        bookOutput.setPage(page);
+        bookOutput.setPage(page+1);
         bookOutput.setTotalPage(bookPage.getTotalPages());
         bookOutput.setBookEntityList(bookPage.getContent());
         return bookOutput;
