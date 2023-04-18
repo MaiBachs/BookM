@@ -56,6 +56,7 @@ public class JpaAuditingConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin")).authorities("ADMIN");
+        auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("user")).authorities("USER");
     }
 
     @Bean

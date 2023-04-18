@@ -28,15 +28,15 @@ public class BookMApplication {
 //
 //		List<AuthorityEntity> authorityList=new ArrayList<>();
 //
-//		authorityList.add(createAuthority("ROLE_ADMIN","ADMIN role"));
+//		authorityList.add(createAuthority("ROLE_USER","USER role"));
 //
 //		User user=new User();
 //
-//		user.setUserName("admin");
-//		user.setFirstName("admin");
-//		user.setLastName("admin");
+//		user.setUserName("user");
+//		user.setFirstName("user");
+//		user.setLastName("user");
 //
-//		user.setPassword(passwordEncoder.encode("admin"));
+//		user.setPassword(passwordEncoder.encode("user"));
 //		user.setEnabled(true);
 //		user.setAuthorities(authorityList);
 //
