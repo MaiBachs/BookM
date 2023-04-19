@@ -28,8 +28,14 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public List<BookEntity> findByBookCategory(String bookCategory) {
-        return bookRepo.findByBookCategory(bookCategory);
+    public BookOutput findByBookCategory(int page, int size,String bookCategory) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<BookEntity> bookPage = bookRepo.findByBookCategory(bookCategory, pageable);
+        BookOutput bookOutput = new BookOutput();
+        bookOutput.setPage(page+1);
+        bookOutput.setTotalPage(bookPage.getTotalPages());
+        bookOutput.setBookEntityList(bookPage.getContent());
+        return bookOutput;
     }
 
     @Override

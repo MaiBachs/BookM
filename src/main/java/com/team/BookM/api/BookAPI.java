@@ -25,8 +25,8 @@ public class BookAPI {
         return bookService.findByBookName(bookEntity.getBookName());
     }
     @PostMapping(value = "/getBookByCategory")
-    public List<BookEntity> getBookByCategory(@RequestBody BookEntity bookEntity){
-        return bookService.findByBookCategory(bookEntity.getBookCategory());
+    public BookOutput getBookByCategory(@RequestBody BookInput bookInput){
+        return bookService.findByBookCategory(bookInput.getPage()-1,  bookInput.getSize(), bookInput.getBookCategory());
     }
     @PostMapping(value = "/getBookByPage")
     public BookOutput findBookByPage(@RequestBody BookInput bookInput){

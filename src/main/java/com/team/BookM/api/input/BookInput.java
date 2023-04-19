@@ -3,6 +3,7 @@ package com.team.BookM.api.input;
 public class BookInput {
     private int page;
     private int size;
+    private String bookCategory;
 
     public int getPage() {
         return page;
@@ -18,5 +19,13 @@ public class BookInput {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public String getBookCategory() {
+        return bookCategory;
+    }
+
+    public void setBookCategory(String bookCategory) {
+        this.bookCategory = bookCategory;
     }
 }

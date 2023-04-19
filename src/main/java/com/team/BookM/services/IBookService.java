@@ -8,6 +8,6 @@ import java.util.List;
 public interface IBookService {
     List<BookEntity> findAll();
     List<BookEntity> findByBookName(String bookName);
-    List<BookEntity> findByBookCategory(String bookCategory);
-    public BookOutput findBookByPage(int page, int size);
+    BookOutput findByBookCategory(int page, int size,String bookCategory);
+    BookOutput findBookByPage(int page, int size);
 }
