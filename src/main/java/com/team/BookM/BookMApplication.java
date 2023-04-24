@@ -42,10 +42,10 @@ public class BookMApplication {
 //
 //		userDetailsRepository.save(user);
 //	}
-	private AuthorityEntity createAuthority(String roleCode,String roleDescription) {
-		AuthorityEntity authority=new AuthorityEntity();
-		authority.setRoleCode(roleCode);
-		authority.setRoleDescription(roleDescription);
-		return authority;
-	}
+//	private AuthorityEntity createAuthority(String roleCode,String roleDescription) {
+//		AuthorityEntity authority=new AuthorityEntity();
+//		authority.setRoleCode(roleCode);
+//		authority.setRoleDescription(roleDescription);
+//		return authority;
+//	}
 }

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -36,7 +37,7 @@ public class JpaAuditingConfig extends WebSecurityConfigurerAdapter{
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint).and()
                 .authorizeRequests((request) -> request
-                        .antMatchers( "/api/v1/auth/login","/api/v1/auth/logout", "/getAllBook", "/getBookByName", "/findAllRule","/getBookByPage","/getBookByCategory").permitAll()
+                        .antMatchers( "/api/v1/auth/login","/api/v1/auth/logout", "/getAllBook", "/getBookByName", "/findAllRule","/getBookByPage","/getBookByCategory","/register").permitAll()
                         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .antMatchers("/bill","/purchaseorder","/arinvoice","/bookmanager","/pagebusiness","/getAllCustomer","/findArinvoice").hasRole("ADMIN")
                         .anyRequest().authenticated())
@@ -53,11 +54,24 @@ public class JpaAuditingConfig extends WebSecurityConfigurerAdapter{
         return super.authenticationManagerBean();
     }
 
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+        auth.setUserDetailsService(userService);
+        auth.setPasswordEncoder(passwordEncoder());
+        return auth;
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin")).authorities("ADMIN");
-        auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("user")).authorities("USER");
+        auth.authenticationProvider(authenticationProvider());
     }
+
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin")).authorities("ADMIN");
+//        auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("user")).authorities("USER");
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){

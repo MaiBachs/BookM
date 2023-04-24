@@ -55,21 +55,10 @@ public class AuthenticationAPI {
         LoginResponse response=new LoginResponse();
         response.setToken(jwtToken);
 
-
         return ResponseEntity.ok(response);
     }
     @Autowired
     private HttpServletRequest request;
-    @GetMapping("/auth/logout")
-    public String logout() {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-        // Xóa token khỏi máy tính của người dùng (nếu có)
-        return "redirect:/login";
-    }
-
     @GetMapping("/auth/userinfo")
     public ResponseEntity<?> getUserInfo(Principal user){
         User userObj=(User) userDetailsService.loadUserByUsername(user.getName());
