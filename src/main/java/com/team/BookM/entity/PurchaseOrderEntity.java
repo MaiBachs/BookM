@@ -1,5 +1,8 @@
 package com.team.BookM.entity;
 
+import org.hibernate.annotations.Nationalized;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -16,8 +19,7 @@ public class PurchaseOrderEntity {
     private String bookAuthor;
     @Column
     private String bookCategory;
-    @Column
-    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String bookDescription;
     @Column
     private Long bookQuatity;
