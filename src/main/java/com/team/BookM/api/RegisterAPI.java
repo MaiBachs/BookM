@@ -19,8 +19,8 @@ public class RegisterAPI {
     @Autowired
     private UserDetailsRepository userDetailsRepository;
 
-    @PostMapping(value = "/register")
-    public void register(@RequestBody User userInput){
+    @PostMapping(value = "/register-user")
+    public void registerUser(@RequestBody User userInput){
         List<AuthorityEntity> authorityList=new ArrayList<>();
 		authorityList.add(createAuthority("ROLE_USER","USER role"));
 
@@ -30,6 +30,20 @@ public class RegisterAPI {
 		user.setPassword(passwordEncoder.encode(userInput.getPassword()));
 		user.setEnabled(true);
 		user.setAuthorities(authorityList);
+
+        userDetailsRepository.save(user);
+    }
+    @PostMapping(value = "/register-admin")
+    public void registerAdmin(@RequestBody User userInput){
+        List<AuthorityEntity> authorityList=new ArrayList<>();
+        authorityList.add(createAuthority("ROLE_ADMIN","ADMIN role"));
+
+        User user=new User();
+        user.setUserName(userInput.getUserName());
+        user.setPhoneNumber(userInput.getPhoneNumber());
+        user.setPassword(passwordEncoder.encode(userInput.getPassword()));
+        user.setEnabled(true);
+        user.setAuthorities(authorityList);
 
         userDetailsRepository.save(user);
     }
