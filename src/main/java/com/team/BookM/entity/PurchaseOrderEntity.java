@@ -28,7 +28,7 @@ public class PurchaseOrderEntity {
     @Column
     private Long payments;
     @Column
-        private Date receivedDate;
+    private Date receivedDate;
     @Column
     private String coverBook;
     @ManyToMany(mappedBy = "purchaseOrderEntityList")

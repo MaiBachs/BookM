@@ -15,8 +15,7 @@ public class BookEntity {
     private String bookAuthor;
     @Column
     private String bookCategory;
-    @Lob
-    @Column
+    @Column(columnDefinition = "LONGTEXT")
     private String bookDescription;
     @Column
     private Long bookPrice;
