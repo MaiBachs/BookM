@@ -14,6 +14,7 @@ import java.util.List;
 
 @Repository
 public interface BookRepo extends JpaRepository<BookEntity, Long> {
+    List<BookEntity> findByBookNameContaining(String bookName);
     List<BookEntity> findByBookName(String bookName);
     Page<BookEntity> findByBookCategory(String bookCategory, Pageable pageable);
     @Modifying

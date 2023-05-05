@@ -1,8 +1,5 @@
 package com.team.BookM.entity;
 
-import org.hibernate.annotations.Nationalized;
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;

@@ -24,7 +24,7 @@ public class BookService implements IBookService {
 
     @Override
     public List<BookEntity> findByBookName(String bookName) {
-        return bookRepo.findByBookName(bookName);
+        return bookRepo.findByBookNameContaining(bookName);
     }
 
     @Override
