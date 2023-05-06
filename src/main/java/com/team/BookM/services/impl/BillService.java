@@ -6,6 +6,7 @@ import com.team.BookM.services.IBillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class BillService implements IBillService {
     private BookManagerRepo bookManagerRepo;
     @Autowired
     private PageBusinessRepo pageBusinessRepo;
+    @Autowired
+    private BookRepo bookRepo;
     @Override
     public BillEntity save(BillEntity billEntity){
         if(billEntity.getTob() !=  null ){
@@ -41,6 +44,15 @@ public class BillService implements IBillService {
 
         List<BookListInBillsEntity> bookList = new ArrayList<>();
         for(BookListInBillsEntity i: billEntity.getBookListInBillsEntity()){
+            BookEntity bookEntity = bookRepo.findByBookName(i.getNameBook()).get(0);
+            if(bookEntity.getPurchases() != null){
+                bookEntity.setPurchases(bookEntity.getPurchases() + i.getQuatity());
+            }else{
+                bookEntity.setPurchases(i.getQuatity());
+            }
+            bookEntity.setBookInventory(bookEntity.getBookInventory() - i.getQuatity());
+            bookRepo.save(bookEntity);
+
             i.setBillEntity(billEntity);
             bookList.add(i);
 

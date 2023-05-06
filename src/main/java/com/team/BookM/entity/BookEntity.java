@@ -23,6 +23,8 @@ public class BookEntity {
     private Long bookInventory;
     @Column
     private String coverBook;
+    @Column
+    private Long purchases;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "book_purchaseoder")
@@ -113,5 +115,13 @@ public class BookEntity {
 
     public void setCoverBook(String coverBook) {
         this.coverBook = coverBook;
+    }
+
+    public Long getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(Long purchases) {
+        this.purchases = purchases;
     }
 }

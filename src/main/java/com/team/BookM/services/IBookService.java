@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IBookService {
     List<BookEntity> findAll();
+    List<BookEntity> findTopBook();
     List<BookEntity> findByBookName(String bookName);
     BookOutput findByBookCategory(int page, int size,String bookCategory);
     BookOutput findBookByPage(int page, int size);

@@ -10,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +19,11 @@ public class BookService implements IBookService {
     @Override
     public List<BookEntity> findAll() {
         return bookRepo.findAll();
+    }
+
+    @Override
+    public List<BookEntity> findTopBook() {
+        return bookRepo.findTop10ByOrderByPurchasesDesc();
     }
 
     @Override
